@@ -1,0 +1,14 @@
+.breadcrumbs {
+    display: block;
+}
+
+.printpreview {
+    /* need scrollbox property
+     * max height is whichever is bigger out of:
+     * e.g. 500px and screen height minus 200px
+     * to prevent an unviewable box with short screens
+     * maybe just set % here and change with later media query for short screens
+     */
+}
+
+.printpreview-item {}
