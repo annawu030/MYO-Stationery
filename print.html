@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Sarah Meng, Anna Wu">
+    <meta name="description" content="Website to make your own stationery">
+    <meta name="keywords" content="make your own, stationery, custom, customize">
+
+    <title>Make Your Own Stationery</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <img src="images/logo.png" alt="Make Your Own Stationery logo" />
+    <a href="account.html"><img src="images/avatar.png" alt="User avatar" /></a>
+    <nav>
+        <a href="create.html">Create</a>
+        <a href="edit.html">Edit</a>
+        <a href="browse.html">Browse</a>
+    </nav>
+
+    <hr />
+
+    <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <a href="#">Stationery Name</a> › Print Preview</span>
+
+    <div class="printpreview">
+        <div class="printpreview-item">
+            <input type="checkbox" name="toprint" value="Selected1" />Select
+            <img src="images/stationeryname-1" alt="Preview of type 1 of Stationery Name" />
+        </div>
+        <div class="printpreview-item">
+            <input type="checkbox" name="toprint" value="Selected2" />Select
+            <img src="images/stationeryname-2" alt="Preview of type 2 of Stationery Name" />
+        </div>
+        <div class="printpreview-item">
+            <input type="checkbox" name="toprint" value="Selected3" />Select
+            <img src="images/stationeryname-3" alt="Preview of type 3 of Stationery Name" />
+        </div>
+    </div>
+
+    <input type="button" value="Go back to edit" />
+    <input type="button" value="Print all" />
+    <input type="button" value="Print selected" />
+</body>
+
+</html>
