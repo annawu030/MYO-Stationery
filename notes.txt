@@ -1,0 +1,8 @@
+off the top of my head, there should be CSS properties that will let us:
+* define the maximum height (and width) of some element (max-height? and max-width?)
+* toggle whether the elements inside an element will scroll
+* toggle whether the scrollbar shows or not (there's one for vertical and one for horizontal)
+
+
+
+what elements do we want to stay on the screen at all times? Do we want the nav to scroll out of view [insert rant about sites that do this]? What if we have the nav float all the time but it appears giant [insert rant about sites that have this]?
