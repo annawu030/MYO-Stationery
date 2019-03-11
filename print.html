@@ -16,38 +16,43 @@
 </head>
 
 <body>
-    <a href="index.html"><img src="images/logo.png" alt="Make Your Own Stationery logo" /></a>
-    <nav>
-        <a href="account.html" title="Account"><img src="images/avatar.png" alt="User avatar" /></a>
-        <a href="create.html">Create</a>
-        <a href="edit.html">Edit</a>
-        <a href="browse.html">Browse</a>
-    </nav>
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="Make Your Own Stationery logo" /></a>
+        <nav>
+            <a href="account.html" title="Account"><img src="images/avatar.png" alt="User avatar" /></a>
+            <a href="create.html">Create</a>
+            <a href="edit.html">Edit</a>
+            <a href="browse.html">Browse</a>
+        </nav>
 
-    <hr />
+        <hr />
+    </header>
 
-    <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <a href="#">Stationery Name</a> › Print Preview</span>
+    <div class="main">
 
-    <!-- might need [] thing in input names -->
-    <div class="printpreview">
-        <div class="printpreview-item">
-            <input type="checkbox" name="toprint" id="Selected1" value="1" /><label for="Selected1">Select</label>
-            <img src="http://placehold.it/300x150" alt="Preview of type 1 of Stationery Name" />
+        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <a href="#">Stationery Name</a> › Print Preview</span>
+
+        <!-- might need [] thing in input names -->
+        <div class="printpreview">
+            <div class="printpreview-item">
+                <input type="checkbox" name="toprint" id="Selected1" value="1" /><label for="Selected1">Select</label>
+                <img src="http://placehold.it/300x150" alt="Preview of type 1 of Stationery Name" />
+            </div>
+            <div class="printpreview-item">
+                <input type="checkbox" name="toprint" id="Selected2" value="2" /><label for="Selected2">Select</label>
+                <img src="http://placehold.it/300x150" alt="Preview of type 2 of Stationery Name" />
+            </div>
+            <div class="printpreview-item">
+                <input type="checkbox" name="toprint" id="Selected3" value="3" /><label for="Selected2">Select</label>
+                <img src="http://placehold.it/300x150" alt="Preview of type 3 of Stationery Name" />
+            </div>
         </div>
-        <div class="printpreview-item">
-            <input type="checkbox" name="toprint" id="Selected2" value="2" /><label for="Selected2">Select</label>
-            <img src="http://placehold.it/300x150" alt="Preview of type 2 of Stationery Name" />
-        </div>
-        <div class="printpreview-item">
-            <input type="checkbox" name="toprint" id="Selected3" value="3" /><label for="Selected2">Select</label>
-            <img src="http://placehold.it/300x150" alt="Preview of type 3 of Stationery Name" />
-        </div>
-    </div>
 
-    <div class="choicebuttons">
-        <input type="button" value="Go back to edit" />
-        <input type="button" value="Print all" />
-        <input type="button" value="Print selected" />
+        <div class="choicebuttons">
+            <input type="button" value="Go back to edit" />
+            <input type="button" value="Print all" />
+            <input type="button" value="Print selected" />
+        </div>
     </div>
 </body>
 
