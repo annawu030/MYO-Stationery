@@ -1,7 +1,14 @@
+nav {
+    /* stick it to the top */
+    /* to the right, to the right */
+    float: right;
+}
+
 .breadcrumbs {
     display: block;
 }
 
+/* print.html */
 .printpreview {
     /* need scrollbox property
      * max height is whichever is bigger out of:
@@ -9,6 +16,22 @@
      * to prevent an unviewable box with short screens
      * maybe just set % here and change with later media query for short screens
      */
+    max-height: 70vh;
+    overflow: auto;
 }
 
-.printpreview-item {}
+.printpreview-item {
+    display: inline-block;
+}
+
+.printpreview-item img {
+    display: block;
+}
+
+.choicebuttons {}
+
+@media (max-height:300px) {
+    .printpreview {
+        max-height: 300px;
+    }
+}
