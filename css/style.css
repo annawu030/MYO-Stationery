@@ -1,7 +1,18 @@
-nav {
+header {
     /* stick it to the top */
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+}
+
+nav {
     /* to the right, to the right */
     float: right;
+}
+
+.main {
+    padding-top: 2rem;
+    /* only need as much space as the navbar takes */
 }
 
 .breadcrumbs {
@@ -30,6 +41,14 @@ nav {
 
 .choicebuttons {}
 
+@media (max-width: 500px) {
+    .main {
+        padding-top: 3rem;
+        /* on narrower screens, the nav is split into two lines */
+    }
+}
+
+/* wip... */
 @media (max-height:300px) {
     .printpreview {
         max-height: 300px;
