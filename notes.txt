@@ -6,3 +6,14 @@ off the top of my head, there should be CSS properties that will let us:
 
 
 what elements do we want to stay on the screen at all times? Do we want the nav to scroll out of view [insert rant about sites that do this]? What if we have the nav float all the time but it appears giant [insert rant about sites that have this]?
+
+
+
+need to look up how various langs handle input elements with the same name--can we get them to send together? e.g. have something like "getName("toprint")" return "[true, false, true, true, false, false]" (example refers to print.html)
+preliminary search tells me it varies by language, especially for PHP; I think we'll just need to look at Javascript though
+
+https://webmasters.stackexchange.com/questions/9775/is-it-valid-to-have-multiple-form-input-elements-with-the-same-name
+
+https://stackoverflow.com/questions/2906793/is-it-valid-to-have-two-input-elements-with-the-same-name
+
+https://stackoverflow.com/questions/452066/html-form-with-multiple-hidden-control-elements-of-the-same-name
