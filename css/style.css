@@ -39,6 +39,37 @@ nav {
     display: block;
 }
 
+#canvas{
+    float: left;
+    width: 30%;
+    height: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+#design_items{
+    float: left;
+    width: 30%;
+    height: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#newId {
+    cursor: pointer;
+}
+
+#img11 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(245, 230, 99);
+    border: 10px solid rgba(136, 136, 136, .5);
+    border-radius: 50%;
+    touch-action: none;
+    user-select: none;
+}
+
 .choicebuttons {}
 
 @media (max-width: 500px) {
