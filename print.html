@@ -13,33 +13,6 @@
     <title>Make Your Own Stationery</title>
 
     <link rel="stylesheet" href="css/style.css">
-
-    <script type="text/javascript">
-        function checkSelected() {
-            alert("SOMETHING FINALLY HAPPENED");
-
-            // how to make this adapt to number of previews? maybe generate this part with PHP? can I?
-            var selected = [document.getElementById("Selected1".checked), document.getElementById("Selected2".checked), document.getElementById("Selected3".checked), document.getElementById("Selected4".checked), document.getElementById("Selected5".checked), document.getElementById("Selected6".checked)];
-
-            var countFalse = 0;
-            var i = 0;
-            while (i < selected.length) {
-                if (selected[i] == false) {
-                    countFalse++;
-                }
-                i++;
-            }
-
-            if (selectedFalse == selected.length) {
-                alert("You did not select any stationery to print.");
-            }
-        }
-        var btnPrintSelected =
-            document.getElementById("btn-printselected");
-
-        btnPrintSelected.addEventListener("click", checkSelected, false);
-
-    </script>
 </head>
 
 <body>
@@ -76,15 +49,15 @@
                     <img src="http://placehold.it/300x150" alt="Preview of type 3 of Stationery Name" />
                 </div>
                 <div class="printpreview-item">
-                    <input type="checkbox" name="toprint" id="Selected1" value="4" /><label for="Selected4">Select</label>
+                    <input type="checkbox" name="toprint" id="Selected4" value="4" /><label for="Selected4">Select</label>
                     <img src="http://placehold.it/300x150" alt="Preview of type 4 of Stationery Name" />
                 </div>
                 <div class="printpreview-item">
-                    <input type="checkbox" name="toprint" id="Selected2" value="5" /><label for="Selected5">Select</label>
+                    <input type="checkbox" name="toprint" id="Selected5" value="5" /><label for="Selected5">Select</label>
                     <img src="http://placehold.it/300x150" alt="Preview of type 5 of Stationery Name" />
                 </div>
                 <div class="printpreview-item">
-                    <input type="checkbox" name="toprint" id="Selected3" value="6" /><label for="Selected6">Select</label>
+                    <input type="checkbox" name="toprint" id="Selected6" value="6" /><label for="Selected6">Select</label>
                     <img src="http://placehold.it/300x150" alt="Preview of type 6 of Stationery Name" />
                 </div>
             </div>
@@ -94,8 +67,37 @@
         <div class="choicebuttons">
             <input type="button" value="Go back to edit" />
             <input type="button" value="Print all" />
-            <input type="button" value="Print selected" id="btn-printselected" />
+            <input type="button" id="btn-printselected" value="Print selected" />
         </div>
+
+        <script type="text/javascript">
+            function checkSelected() {
+                alert("SOMETHING FINALLY HAPPENED");
+
+                // how to make this adapt to number of previews? maybe generate this part with PHP? can I?
+                var selected = [document.getElementById("Selected1").checked, document.getElementById("Selected2").checked, document.getElementById("Selected3").checked, document.getElementById("Selected4").checked, document.getElementById("Selected5").checked, document.getElementById("Selected6").checked];
+
+                var thing = document.getElementById("Selected1").checked;
+                alert(thing);
+
+                var countFalse = 0;
+                var i = 0;
+                while (i < selected.length) {
+                    if (selected[i] == false) {
+                        countFalse++;
+                    }
+                    i++;
+                }
+
+                if (selectedFalse == selected.length) {
+                    alert("You did not select any stationery to print.");
+                }
+            }
+            var btnPrintSelected =
+                document.getElementById("btn-printselected");
+            btnPrintSelected.addEventListener("click", checkSelected, false);
+
+        </script>
     </main>
 </body>
 
