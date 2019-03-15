@@ -1,5 +1,10 @@
 /* some CSS (mostly for navigation) taken from the personal website of Sarah Meng (currently http://www.people.virginia.edu/~shm3px/index.html), one of the creators */
 
+/* help from these two pages for flexbos stuff:
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ * https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+ */
+
 /* background and body stuff */
 
 body {
@@ -28,7 +33,7 @@ nav a {
     padding: 0;
     display: inline-block;
     text-align: center;
-    min-width: 9rem;
+    min-width: 5rem;
 }
 
 a:hover {
@@ -52,15 +57,31 @@ main {
 }
 
 /* print.html */
-.printpreview {
-    /* need scrollbox property
-     * max height is whichever is bigger out of:
-     * e.g. 500px and screen height minus 200px
-     * to prevent an unviewable box with short screens
-     * maybe just set % here and change with later media query for short screens
-     */
-    max-height: 70vh;
+#printpreview {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4rem);
+    /* 4rem: 2 from nav, 2 from main padding */
+}
+
+#printpreview-window-wrapper {
+    flex-grow: 1;
+    /* take up as much space as possible */
+
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 4rem - 3rem);
+    /* 4rem: 2 from nav, 2 from main padding;
+     * 3rem: 1 from breadcrumbs, 1ish from buttons, rest is just additional padding now */
+
+    background-color: #eedddd;
+}
+
+#printpreview-window {
+    flex-grow: 1;
     overflow: auto;
+    margin: 1rem 0;
+    background-color: #ddeedd;
 }
 
 .printpreview-item {
@@ -71,11 +92,13 @@ main {
     display: block;
 }
 
-.choicebuttons {}
+.choicebuttons {
+    align-items: center;
+}
 
 @media (max-width: 500px) {
-    .main {
-        padding-top: 3rem;
+    main {
+        padding-top: 5rem;
         /* on narrower screens, the nav is split into two lines */
     }
 }
@@ -84,5 +107,9 @@ main {
 @media (max-height:300px) {
     .printpreview {
         max-height: 300px;
+    }
+
+    .choicebuttons {
+        position: relative;
     }
 }
