@@ -26,9 +26,9 @@ nav {
 nav a {
     margin: 0;
     padding: 0;
-    min-width: 5rem;
     display: inline-block;
     text-align: center;
+    min-width: 9rem;
 }
 
 a:hover {
@@ -43,8 +43,8 @@ a:hover {
 /* body stuff */
 
 main {
-    padding-top: 2rem;
-    /* only need as much space as the navbar takes */
+    padding: 3rem 1rem 1rem 1rem;
+    /* need as much space as the navbar takes (2rem) + nice padding (1rem)*/
 }
 
 .breadcrumbs {
