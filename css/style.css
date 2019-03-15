@@ -1,16 +1,48 @@
+/* some CSS (mostly for navigation) taken from the personal website of Sarah Meng (currently http://www.people.virginia.edu/~shm3px/index.html), one of the creators */
+
+/* background and body stuff */
+
+body {
+    /* to make nav and hr touch page sides */
+    margin: 0;
+}
+
+/* nav stuff */
+
 header {
     /* stick it to the top */
     position: fixed;
-    z-index: 10;
+    z-index: 50;
     width: 100%;
 }
 
 nav {
-    /* to the right, to the right */
+    /* most of the links go to the right */
+    width: 100%;
+    line-height: 2rem;
+    background-color: #ddd;
+}
+
+nav a {
+    margin: 0;
+    padding: 0;
+    min-width: 5rem;
+    display: inline-block;
+    text-align: center;
+}
+
+a:hover {
+    color: #fde;
+    background-color: #00a;
+}
+
+.functionlinks {
     float: right;
 }
 
-.main {
+/* body stuff */
+
+main {
     padding-top: 2rem;
     /* only need as much space as the navbar takes */
 }
