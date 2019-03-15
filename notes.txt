@@ -17,3 +17,10 @@ https://webmasters.stackexchange.com/questions/9775/is-it-valid-to-have-multiple
 https://stackoverflow.com/questions/2906793/is-it-valid-to-have-two-input-elements-with-the-same-name
 
 https://stackoverflow.com/questions/452066/html-form-with-multiple-hidden-control-elements-of-the-same-name
+
+-----------------------------------------------------------------------------------------------------
+HTML Graphics - 
+  Canvas - https://www.w3schools.com/html/html5_canvas.asp
+  SVG - https://www.w3schools.com/html/html5_svg.asp
+drag and drop - https://www.w3schools.com/html/html5_draganddrop.asp
+mouse position - https://stackoverflow.com/questions/17130395/real-mouse-position-in-canvas
