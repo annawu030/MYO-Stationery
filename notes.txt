@@ -24,3 +24,7 @@ HTML Graphics -
   SVG - https://www.w3schools.com/html/html5_svg.asp
 drag and drop - https://www.w3schools.com/html/html5_draganddrop.asp
 mouse position - https://stackoverflow.com/questions/17130395/real-mouse-position-in-canvas
+
+------------------------------------------------------------------------------------------------------
+
+For the browse page, my first thought is that we add tags as CSS classes and then toggle those classes as visible or hidden. And we might want to have all the checkboxes checked by default
