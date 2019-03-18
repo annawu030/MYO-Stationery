@@ -18,10 +18,10 @@
 <body>
     <header>
         <nav role="navigation">
-            <a href="index.html"><img src="images/logo.png" alt="Make Your Own Stationery logo" /></a>
+            <a href="index.html" id="logo">MYOS</a>
 
             <span class="functionlinks">
-                <a href="account.html" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" /></a>
+                <a href="account.html" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" id="avatar" /></a>
                 <a href="create.html">Create</a>
                 <a href="edit.html">Edit</a>
                 <a href="browse.html">Browse</a>
@@ -77,22 +77,24 @@
                 // how to make this adapt to number of previews? maybe generate this part with PHP? can I?
                 var selected = [document.getElementById("Selected1").checked, document.getElementById("Selected2").checked, document.getElementById("Selected3").checked, document.getElementById("Selected4").checked, document.getElementById("Selected5").checked, document.getElementById("Selected6").checked];
 
+                // debugging
                 var thing = document.getElementById("Selected1").checked;
                 alert(thing);
 
-                var countFalse = 0;
+                var countTrue = 0;
                 var i = 0;
                 while (i < selected.length) {
-                    if (selected[i] == false) {
-                        countFalse++;
+                    if (selected[i] == true) {
+                        countTrue++;
                     }
                     i++;
                 }
 
-                if (selectedFalse == selected.length) {
+                if (selectedTrue == 0) {
                     alert("You did not select any stationery to print.");
                 }
             }
+            // this whitespacing is strange... Beautify, wat u do??
             var btnPrintSelected =
                 document.getElementById("btn-printselected");
             btnPrintSelected.addEventListener("click", checkSelected, false);
