@@ -6,9 +6,13 @@
  */
 
 /* key colors:
- * #049 a dark blue
+ * #039 a dark blue, for text
  * #def a light blue, main bg color
  * #adf a light blue but darker/more saturated than #def, main nav color
+ *
+ * #039 against both #adf and #def satisfy AAA accessibility recommendations (and the AA requirement, of course) according to Colorable:
+ * http://jxnblk.com/colorable/demos/text/?background=%23adf&foreground=%23039
+ */
 
 /* background and body stuff */
 
@@ -19,7 +23,7 @@ body {
 }
 
 a {
-    color: #049;
+    color: #039;
     font-weight: bolder;
     text-decoration: none;
 }
@@ -58,7 +62,7 @@ nav a {
 
 nav a:hover {
     color: #adf;
-    background-color: #049;
+    background-color: #039;
     text-decoration: none;
 }
 
@@ -114,7 +118,6 @@ main {
     flex-grow: 1;
     overflow: auto;
     margin: 1rem 0;
-    background-color: white;
 }
 
 .printpreview-item {
@@ -164,7 +167,7 @@ main {
         visibility: hidden;
     }
 
-    #printpreview-window-wrapper * {
+    #printpreview-window-wrapper img {
         visibility: visible;
     }
 
