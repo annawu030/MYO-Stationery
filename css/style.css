@@ -5,11 +5,27 @@
  * https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
  */
 
+/* key colors:
+ * #049 a dark blue
+ * #def a light blue, main bg color
+ * #adf a light blue but darker/more saturated than #def, main nav color
+
 /* background and body stuff */
 
 body {
     /* to make nav and hr touch page sides */
     margin: 0;
+    background-color: #def;
+}
+
+a {
+    color: #049;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* nav stuff */
@@ -25,7 +41,7 @@ nav {
     /* most of the links go to the right */
     width: 100%;
     line-height: 2rem;
-    background-color: #ddd;
+    background-color: #adf;
 }
 
 nav a {
@@ -36,14 +52,27 @@ nav a {
     min-width: 5rem;
 }
 
-a:hover {
-    color: #fde;
-    background-color: #00a;
+nav a:hover {
+    color: #adf;
+    background-color: #049;
+    text-decoration: none;
 }
 
 .functionlinks {
     float: right;
 }
+
+#logo {
+    font-style: italic;
+}
+
+#avatar {
+    height: 1.25rem;
+    margin: 0 0.5rem;
+    vertical-align: text-bottom;
+    /* there's something weird about vertical-align: middle; */
+}
+
 
 /* body stuff */
 
@@ -56,7 +85,9 @@ main {
     display: block;
 }
 
+
 /* print.html */
+
 #printpreview {
     display: flex;
     flex-direction: column;
@@ -73,15 +104,13 @@ main {
     max-height: calc(100vh - 4rem - 3rem);
     /* 4rem: 2 from nav, 2 from main padding;
      * 3rem: 1 from breadcrumbs, 1ish from buttons, rest is just additional padding now */
-
-    background-color: #eedddd;
 }
 
 #printpreview-window {
     flex-grow: 1;
     overflow: auto;
     margin: 1rem 0;
-    background-color: #ddeedd;
+    background-color: white;
 }
 
 .printpreview-item {
