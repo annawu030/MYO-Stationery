@@ -1,18 +1,55 @@
+/* some CSS used for navigation taken from the personal website of Sarah Meng (currently http://www.people.virginia.edu/~shm3px/index.html), one of the creators */
+
+/* help from these two pages for flexbox stuff:
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ * https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+ */
+
+/* background and body stuff */
+
+body {
+    /* to make nav and hr touch page sides */
+    margin: 0;
+}
+
+/* nav stuff */
+
 header {
     /* stick it to the top */
     position: fixed;
-    z-index: 10;
+    z-index: 50;
     width: 100%;
 }
 
 nav {
-    /* to the right, to the right */
+    /* most of the links go to the right */
+    width: 100%;
+    line-height: 2rem;
+    background-color: #ddd;
+}
+
+nav a {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    min-width: 5rem;
+}
+
+a:hover {
+    color: #fde;
+    background-color: #00a;
+}
+
+.functionlinks {
     float: right;
 }
 
-.main {
-    padding-top: 2rem;
-    /* only need as much space as the navbar takes */
+/* body stuff */
+
+main {
+    padding: 3rem 1rem 1rem 1rem;
+    /* need as much space as the navbar takes (2rem) + nice padding (1rem)*/
 }
 
 .breadcrumbs {
@@ -20,15 +57,31 @@ nav {
 }
 
 /* print.html */
-.printpreview {
-    /* need scrollbox property
-     * max height is whichever is bigger out of:
-     * e.g. 500px and screen height minus 200px
-     * to prevent an unviewable box with short screens
-     * maybe just set % here and change with later media query for short screens
-     */
-    max-height: 70vh;
+#printpreview {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4rem);
+    /* 4rem: 2 from nav, 2 from main padding */
+}
+
+#printpreview-window-wrapper {
+    flex-grow: 1;
+    /* take up as much space as possible */
+
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 4rem - 3rem);
+    /* 4rem: 2 from nav, 2 from main padding;
+     * 3rem: 1 from breadcrumbs, 1ish from buttons, rest is just additional padding now */
+
+    background-color: #eedddd;
+}
+
+#printpreview-window {
+    flex-grow: 1;
     overflow: auto;
+    margin: 1rem 0;
+    background-color: #ddeedd;
 }
 
 .printpreview-item {
@@ -70,11 +123,13 @@ nav {
     user-select: none;
 }
 
-.choicebuttons {}
+.choicebuttons {
+    align-items: center;
+}
 
 @media (max-width: 500px) {
-    .main {
-        padding-top: 3rem;
+    main {
+        padding-top: 5rem;
         /* on narrower screens, the nav is split into two lines */
     }
 }
@@ -83,5 +138,9 @@ nav {
 @media (max-height:300px) {
     .printpreview {
         max-height: 300px;
+    }
+
+    .choicebuttons {
+        position: relative;
     }
 }
