@@ -35,13 +35,17 @@ header {
     position: fixed;
     z-index: 50;
     width: 100%;
+    background-color: #adf;
+}
+
+header * {
+    margin: 0;
+    padding: 0;
 }
 
 nav {
-    /* most of the links go to the right */
     width: 100%;
     line-height: 2rem;
-    background-color: #adf;
 }
 
 nav a {
@@ -68,7 +72,7 @@ nav a:hover {
 
 #avatar {
     height: 1.25rem;
-    margin: 0 0.5rem;
+    padding: 0 0.5rem;
     vertical-align: text-bottom;
     /* there's something weird about vertical-align: middle; */
 }
@@ -125,7 +129,18 @@ main {
     align-items: center;
 }
 
-@media (max-width: 500px) {
+
+/* narrow screens */
+
+/* the nav needs 25rem to be on one line */
+/* would rather have main {} below triggered early rather than late
+ * because triggering late means the nav covers the breadcrumbs */
+
+@media (max-width: 25rem) {
+    .functionlinks {
+        float: none;
+    }
+
     main {
         padding-top: 5rem;
         /* on narrower screens, the nav is split into two lines */
@@ -133,12 +148,25 @@ main {
 }
 
 /* wip... */
-@media (max-height:300px) {
-    .printpreview {
-        max-height: 300px;
+@media (max-height: 800px) {
+    .printpreview-window {
+        min-height: 300px;
     }
 
     .choicebuttons {
         position: relative;
     }
+}
+
+/* print.html */
+@media print {
+    html * {
+        visibility: hidden;
+    }
+
+    #printpreview-window-wrapper * {
+        visibility: visible;
+    }
+
+    /* doesn't hide the non-selected stationery */
 }
