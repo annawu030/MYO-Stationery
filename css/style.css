@@ -94,6 +94,18 @@ main {
 }
 
 
+/* index.html */
+
+#starsoftheshow {
+    text-align: center;
+}
+
+#starsoftheshow > a {
+    padding: 2rem 5rem;
+    font-size: 2rem;
+}
+
+
 /* browse.html */
 
 #browse-wrapper {
