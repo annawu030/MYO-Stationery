@@ -128,7 +128,14 @@ main {
     display: block;
 }
 
-#canvas{
+.choicebuttons {
+    align-items: center;
+}
+
+
+/* create.html */
+
+#canvas {
     float: left;
     width: 30%;
     height: 300px;
@@ -137,7 +144,8 @@ main {
     border: 1px solid black;
     overflow: hidden;
 }
-#design_items{
+
+#design_items {
     float: left;
     width: 30%;
     height: 300px;
@@ -149,6 +157,7 @@ main {
 #newId {
     position: relative;
 }
+
 /* 
 #newId:active {
     
@@ -167,10 +176,6 @@ main {
     border-radius: 50%;
     touch-action: none;
     user-select: none;
-}
-
-.choicebuttons {
-    align-items: center;
 }
 
 
