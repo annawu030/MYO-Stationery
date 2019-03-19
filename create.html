@@ -36,8 +36,12 @@
 
         <br>
         <div class="float-container">
-            <div id="canvas" class="float" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
             <div class="float">
+                <div id="canvas" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
+            </div>
+
+            <div class="float">
+                <!-- open tabs on click -->
                 <div class="tab">
                     <button class="tablinks" onclick="openTab(event, 'shape')">Shape</button>
                     <button class="tablinks" onclick="openTab(event, 'image')">Image</button>
@@ -96,10 +100,12 @@
             </div>
         </div>
         <div id="container">
-
         </div>
-
+        <form action="print.html">
+            <input type="submit" value="Print" />
+        </form>
     </div>
+
 </body>
 <script src="javascript/canvas.js"></script>
 
