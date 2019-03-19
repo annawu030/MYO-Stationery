@@ -21,8 +21,7 @@
             <a href="index.html" id="logo">MYOS</a>
 
             <span class="functionlinks">
-                <a href="account.html" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar"
-                        id="avatar" /></a>
+                <a href="account.html" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" id="avatar" /></a>
                 <a href="create.html">Create</a>
                 <a href="edit.html">Edit</a>
                 <a href="browse.html">Browse</a>
@@ -30,29 +29,28 @@
         </nav>
     </header>
 
-    <main>
+    <main id="browse-wrapper">
 
-        <div class="grid-container">
-            <div class="grid-item">
-                <h4>Complexity</h4>
-                <ul style="list-style-type:none;">
-                    <li><input type="checkbox" name="complexity1" value="complex"> complex (10+ elements)</li>
-                    <li><input type="checkbox" name="complexity2" value="simple"> simple (&lt; 10 elements)</li>
-                </ul>
-                <h4>Colors</h4>
-                <ul style="list-style-type:none;">
-                    <li><input type="checkbox" name="color1" value="warm"> warm</li>
-                    <li><input type="checkbox" name="color2" value="cold"> cold</li>
-                </ul>
-                <h4>User Tags</h4>
-                <ul style="list-style-type:none;">
-                    <li><input type="checkbox" name="usertag1" value="tag_birthday"> birthday</li>
-                    <li><input type="checkbox" name="usertag2" value="tag_professional"> professional</li>
-                    <li><input type="checkbox" name="usertag2" value="tag_fun"> fun</li>
-                </ul>
-            </div>
+        <div id="filterlist">
+            <h4>Complexity</h4>
+            <ul style="list-style-type:none;">
+                <li><input type="checkbox" name="complexity1" value="complex"> complex (10+ elements)</li>
+                <li><input type="checkbox" name="complexity2" value="simple"> simple (&lt; 10 elements)</li>
+            </ul>
+            <h4>Colors</h4>
+            <ul style="list-style-type:none;">
+                <li><input type="checkbox" name="color1" value="warm"> warm</li>
+                <li><input type="checkbox" name="color2" value="cold"> cold</li>
+            </ul>
+            <h4>User Tags</h4>
+            <ul style="list-style-type:none;">
+                <li><input type="checkbox" name="usertag1" value="tag_birthday"> birthday</li>
+                <li><input type="checkbox" name="usertag2" value="tag_professional"> professional</li>
+                <li><input type="checkbox" name="usertag2" value="tag_fun"> fun</li>
+            </ul>
+        </div>
 
-
+        <div id="stationerydisplay">
             <div class="grid-item simple warm tag_birthday">
                 <fieldset>
                     <legend>Stationery Name - Username</legend>
@@ -121,6 +119,8 @@
 
 
     <script type="text/javascript">
+        // this is a mess
+
         function filterStationery() {
             var theTag = this.value;
             if (!this.checked) {
