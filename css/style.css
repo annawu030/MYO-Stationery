@@ -99,6 +99,7 @@ main {
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
+    overflow: hidden;
 }
 #design_items{
     float: left;
@@ -110,7 +111,16 @@ main {
 }
 
 #newId {
+    position: relative;
+}
+/* 
+#newId:active {
+    
+} */
+
+#newId:hover {
     cursor: pointer;
+    opacity: .75;
 }
 
 #img11 {
