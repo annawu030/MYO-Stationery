@@ -86,13 +86,16 @@ function drag(e) {
     activeItem.currentY = e.clientY - activeItem.initialY;
     activeItem.xOffset = activeItem.currentX;
     activeItem.yOffset = activeItem.currentY;
-    setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+    // setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+    activeItem.style.transform = setTranslate(activeItem.currentX, activeItem.currentY);
   }
 }
 
-function setTranslate(xPos, yPos, el) { // transform selected element by x,y pos
-  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-}
+// function setTranslate(xPos, yPos, el) { // transform selected element by x,y pos
+//   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+// }
+
+var setTranslate = (xPos, yPos) => "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
