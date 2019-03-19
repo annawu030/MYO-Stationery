@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Sarah Meng, Anna Wu">
+    <meta name="description" content="Website to make your own stationery">
+    <meta name="keywords" content="make your own, stationery, custom, customize">
+
+    <title>Make Your Own Stationery</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="Make Your Own Stationery logo" /></a>
+        <nav>
+            <a href="account.html" title="Account"><img src="images/avatar.png" alt="User avatar" /></a>
+            <a href="create.html">Create</a>
+            <a href="edit.html">Edit</a>
+            <a href="browse.html">Browse</a>
+        </nav>
+
+        <hr />
+    </header>
+
+    <div class="main">
+        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › Stationery
+            Name </span>
+        <!-- <div id="design_items" ondrop="drop(event)">
+            <img src="http://placehold.it/50x50" draggable="true" ondragstart="drag(event)" id="drag1">
+        </div>
+
+        <div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></div> -->
+        <button onclick="myFunction()">Try it</button>
+        <p id="demo"></p>
+        <div id="container">
+            <div id="design_items">
+                <!-- <div id="img11">
+
+                </div> -->
+                <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);"
+                    id="img1">
+            </div>
+        </div>
+        <div id="canvas" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
+    </div>
+</body>
+<script src="javascript/canvas.js"></script>
+
+</html>
