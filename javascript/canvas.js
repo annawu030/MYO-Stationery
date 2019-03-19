@@ -1,188 +1,95 @@
-var nodeCopy = null;
 var counter = 1;
+
 function dragstart_handler(ev) {
-  console.log("dragStart");
-  // Change the source element's background color to signify drag has started
-  // ev.currentTarget.style.border = "dashed";
-  // Add the id of the drag source element to the drag data payload so
-  // it is available when the drop event is fired
-  ev.dataTransfer.setData("text", ev.target.id);
-  // Tell the browser both copy and move are possible
-  ev.effectAllowed = "copy";
+  ev.dataTransfer.setData("text", ev.target.id); // Add the id of dragged source element (target) to the drag data payload
+  ev.effectAllowed = "copy"; // Tell the browser that copy is possible
 }
+
 function dragover_handler(ev) {
-  console.log("dragOver");
-  // Change the target element's border to signify a drag over event
-  // has occurred
-  // ev.currentTarget.style.background = "lightblue";
   ev.preventDefault();
 }
+
 function drop_handler(ev) {
-  console.log("Drop");
   ev.preventDefault();
-  // Get the id of drag source element (that was added to the drag data
-  // payload by the dragstart event handler)
-  var id = ev.dataTransfer.getData("text");
-  // Only Move the element if the source and destination ids are both "move"
-  //  if (id == "src_move" && ev.target.id == "dest_move")
-  //    ev.target.appendChild(document.getElementById(id));
-  // Copy the element if the source and destination ids are both "copy"
+  var id = ev.dataTransfer.getData("text"); // Get the id of dragged source element (target) from the drag data payload
+  // Copy the element only if the source and destination ids are both "copy"
   if (id == "img1" && ev.target.id == "canvas") {
-    nodeCopy = document.getElementById(id).cloneNode(true);
-    var string = "newId" + counter;
+    // *****id condition need to fix to be dynamic
+    var nodeCopy = document.getElementById(id).cloneNode(true);
+    var string = "newId"; //+ counter;
     nodeCopy.id = string;
     counter += 1;
     ev.target.appendChild(nodeCopy);
   }
 }
+
 function dragend_handler(ev) {
-  console.log("dragEnd");
-  // Restore source's border
-  //  ev.target.style.border = "solid black";
-  // Remove all of the drag data
+  // Remove all drag data
   ev.dataTransfer.clearData();
 }
 
+// ----- code block used to test img ids (children of canvas div) --------------
 var dragItem = document.querySelector("#canvas").children;
-var container = document.querySelector("#canvas");
-
-// var c = document.getElementById("design_items").children;
 function myFunction() {
   var txt = "";
   var i;
   for (i = 0; i < dragItem.length; i++) {
     txt = txt + dragItem[i].id + "<br>";
   }
-
   document.getElementById("demo").innerHTML = txt;
 }
+// -----------------------------------------------------------------------------
 
+var container = document.querySelector("#canvas"); // set canvas as the space where images can move within
+var activeItem = null;
 var active = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
 
-// container.addEventListener("touchstart", dragStart, false);
-// container.addEventListener("touchend", dragEnd, false);
-// container.addEventListener("touchmove", drag, false);
-
+//add 3 event listeners each for mousedown, mouseup, and while mouse is moving
 container.addEventListener("mousedown", dragStart, false);
 container.addEventListener("mouseup", dragEnd, false);
 container.addEventListener("mousemove", drag, false);
 
+// function that is triggered at mousedown
 function dragStart(e) {
-  // if (e.type === "touchstart") {
-  //   initialX = e.touches[0].clientX - xOffset;
-  //   initialY = e.touches[0].clientY - yOffset;
-  // } else {
-  initialX = e.clientX - xOffset;
-  initialY = e.clientY - yOffset;
-  // }
+  if (e.target !== e.currentTarget) { //if target is not identical element as current target
+    active = true; // set bool active to true
+    activeItem = e.target; // set item we interact with
 
-  if (e.target === dragItem) {
-    active = true;
+    if (activeItem !== null) { // if there is an active item
+      if (!activeItem.xOffset) { // set xOffset of the item to 0 if not exist
+        activeItem.xOffset = 0;
+      }
+      if (!activeItem.yOffset) { // set yOffset of the item to 0 if not exist
+        activeItem.yOffset = 0;
+      }
+      activeItem.initialX = e.clientX - activeItem.xOffset; //set inital x, y
+      activeItem.initialY = e.clientY - activeItem.yOffset;
+
+    }
   }
 }
 
+// if there is an active item, set active item's initial x, y to current x, y. Change bool active back to false and clear active item to null
 function dragEnd(e) {
-  initialX = currentX;
-  initialY = currentY;
-
+  if (activeItem !== null) {
+    activeItem.initialX = activeItem.currentX;
+    activeItem.initialY = activeItem.currentY;
+  }
   active = false;
+  activeItem = null;
 }
 
+// while drag, set current x, y of the active item to its coordinate on screen. make the x, y offsets equal the current x, y values. 
 function drag(e) {
   if (active) {
-
-    e.preventDefault();
-
-    // if (e.type === "touchmove") {
-    //   currentX = e.touches[0].clientX - initialX;
-    //   currentY = e.touches[0].clientY - initialY;
-    // } else {
-    currentX = e.clientX - initialX;
-    currentY = e.clientY - initialY;
-    // }
-
-    xOffset = currentX;
-    yOffset = currentY;
-
-    setTranslate(currentX, currentY, dragItem);
+    activeItem.currentX = e.clientX - activeItem.initialX;
+    activeItem.currentY = e.clientY - activeItem.initialY;
+    activeItem.xOffset = activeItem.currentX;
+    activeItem.yOffset = activeItem.currentY;
+    setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
   }
 }
 
-function setTranslate(xPos, yPos, el) {
+function setTranslate(xPos, yPos, el) { // transform selected element by x,y pos
   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 }
-
-// function allowDrop(ev) {
-//   ev.preventDefault();
-// }
-
-// function drag(ev) {
-//   ev.dataTransfer.setData("text", ev.target.id);
-// }
-
-// function drop(ev) {
-//   ev.preventDefault();
-//   var data = ev.dataTransfer.getData("text");
-//   var nodeCopy = document.getElementById(data).cloneNode(true);
-//   nodeCopy.id = "newId";
-//   ev.target.appendChild(nodeCopy);
-// }
-
-// let currentDroppable = null;
-
-// newId.onmousedown = function (event) {
-
-//   let shiftX = event.clientX - newId.getBoundingClientRect().left;
-//   let shiftY = event.clientY - newId.getBoundingClientRect().top;
-
-//   newId.style.position = 'absolute';
-//   newId.style.zIndex = 1000;
-//   document.body.append(newId);
-
-//   moveAt(event.pageX, event.pageY);
-
-//   function moveAt(pageX, pageY) {
-//     newId.style.left = pageX - shiftX + 'px';
-//     newId.style.top = pageY - shiftY + 'px';
-//   }
-
-//   function onMouseMove(event) {
-//     moveAt(event.pageX, event.pageY);
-
-//     newId.hidden = true;
-//     let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-//     newId.hidden = false;
-
-//     if (!elemBelow) return;
-
-//     let droppableBelow = elemBelow.closest('.droppable');
-//     if (currentDroppable != droppableBelow) {
-//       if (currentDroppable) { // null when we were not over a droppable before this event
-//         leaveDroppable(currentDroppable);
-//       }
-//       currentDroppable = droppableBelow;
-//       if (currentDroppable) { // null if we're not coming over a droppable now
-//         // (maybe just left the droppable)
-//         enterDroppable(currentDroppable);
-//       }
-//     }
-//   }
-
-//   document.addEventListener('mousemove', onMouseMove);
-
-//   newId.onmouseup = function () {
-//     document.removeEventListener('mousemove', onMouseMove);
-//     newId.onmouseup = null;
-//   };
-
-// };
-
-// newId.ondragstart = function () {
-//   return false;
-// };
