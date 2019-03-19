@@ -52,7 +52,7 @@
             </div>
 
 
-            <div class="grid-item simple warm birthday">
+            <div class="grid-item simple warm tag_birthday">
                 <fieldset>
                     <legend>Stationery Name - Username</legend>
                     <img src="http://placehold.it/300x150" /> <br>
@@ -73,21 +73,21 @@
                     <button type="button">Use as Template</button>
                 </fieldset>
             </div>
-            <div class="grid-item simple professional">
+            <div class="grid-item simple tag_professional">
                 <fieldset>
                     <legend>Stationery Name - Anonymous</legend>
                     <img src="http://placehold.it/300x150" /> <br>
                     <button type="button">Use as Template</button>
                 </fieldset>
             </div>
-            <div class="grid-item complex fun">
+            <div class="grid-item complex tag_fun">
                 <fieldset>
                     <legend>Stationery Name - Username</legend>
                     <img src="http://placehold.it/300x150" /> <br>
                     <button type="button" disabled>For Inspiration :)</button>
                 </fieldset>
             </div>
-            <div class="grid-item complex birthday">
+            <div class="grid-item complex tag_birthday">
                 <fieldset>
                     <legend>Stationery Name - Username</legend>
                     <img src="http://placehold.it/300x150" /> <br>
@@ -108,7 +108,7 @@
                     <button type="button" disabled>For Inspiration :)</button>
                 </fieldset>
             </div>
-            <div class="grid-item simple fun">
+            <div class="grid-item simple tag_fun">
                 <fieldset>
                     <legend>Stationery Name - Username</legend>
                     <img src="http://placehold.it/300x150" /> <br>
@@ -120,7 +120,25 @@
 
 
     <script type="text/javascript">
-        //function
+        function filterStationery() {
+            var theTag = this.value;
+            if (!this.checked) {
+                for (stationery in document.getElementsByClassName(theTag)) {
+                    stationery.style.display = "none";
+                }
+            } else(!this.checked) {
+                for (stationery in document.getElementsByClassName(theTag)) {
+                    stationery.style.display = "inline-block";
+                }
+            }
+        }
+        // get list of tags to filter by
+        var listOfTags = document.querySelectorAll("li input");
+        // list of refs to the checkboxes
+
+        for (tag in listOfTags) {
+            tag.addEventListener("click", filterStationery, false);
+        }
 
     </script>
 
