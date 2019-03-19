@@ -120,11 +120,6 @@ main {
     grid-template-rows: auto;
 }
 
-#first {
-    grid-column-start: 1;
-    grid-row-start: 1;
-}
-
 
 /* print.html */
 
@@ -251,6 +246,25 @@ main {
 
 /* narrow screens */
 
+@media (max-width: 40rem) {
+
+
+    /* browse.html */
+    #browse-wrapper {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    #browse-wrapper > * {
+        overflow: auto;
+        max-height: 100vh;
+    }
+
+    #filterlist {
+        max-width: 100%;
+    }
+}
+
 /* the nav needs 25rem to be on one line */
 /* would rather have main {} below triggered early rather than late
  * because triggering late means the nav covers the breadcrumbs */
@@ -266,14 +280,33 @@ main {
     }
 }
 
-/* wip... */
-@media (max-height: 800px) {
-    .printpreview-window {
-        min-height: 300px;
-    }
+/* wip... for short screens */
+@media screen and (max-height: 300px) {
 
     .choicebuttons {
         position: relative;
+    }
+
+    /* print.html */
+
+    #printpreview {
+        min-height: 100vh;
+        /* 4rem: 2 from nav, 2 from main padding */
+    }
+
+    #printpreview-window-wrapper {
+        max-height: none;
+    }
+
+    #printpreview-window {
+        min-height: 300px;
+    }
+
+    /* browse.html */
+    #browse-wrapper > * {
+        overflow: auto;
+        max-height: none;
+        height: 600px;
     }
 }
 
