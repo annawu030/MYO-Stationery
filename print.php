@@ -16,18 +16,7 @@
 </head>
 
 <body>
-    <header>
-        <nav role="navigation">
-            <a href="index.html" id="logo">MYOS</a>
-
-            <span class="functionlinks">
-                <a href="account.html" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" id="avatar" /></a>
-                <a href="create.html">Create</a>
-                <a href="edit.html">Edit</a>
-                <a href="browse.html">Browse</a>
-            </span>
-        </nav>
-    </header>
+    <?php include "includes/navbar.php"; ?>
 
     <main id="printpreview">
 

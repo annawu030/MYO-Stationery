@@ -16,24 +16,13 @@
 </head>
 
 <body>
-    <header>
-        <nav role="navigation">
-            <a href="index.html" id="logo">MYOS</a>
-
-            <span class="functionlinks">
-                <a href="account.php" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" id="avatar" /></a>
-                <a href="create.html">Create</a>
-                <a href="edit.html">Edit</a>
-                <a href="browse.html">Browse</a>
-            </span>
-        </nav>
-    </header>
+    <?php include "includes/navbar.php"; ?>
 
     <main>
         <p>Welcome to our site! You can create your own stationery or browse stationery that others have created.</p>
 
         <div id="starsoftheshow">
-            <a href="create.html">Create</a> <a href="browse.html">Browse</a>
+            <a href="create.php">Create</a> <a href="browse.php">Browse</a>
         </div>
     </main>
 </body>
