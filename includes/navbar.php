@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <header>
     <nav role="navigation">
         <a href="index.php" id="logo">MYOS</a>

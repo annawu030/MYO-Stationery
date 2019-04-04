@@ -21,12 +21,11 @@
     <main>
         <p>
             <?php
-            session_start(); // destroy on logout
         
             // if user is logged in, display saved stuff from database
-            if (isset($_SESSION["user"])) {
+            if (isset($_SESSION["username"])) {
                 // greet
-                $user = $_SESSION["user"];
+                $user = $_SESSION["username"];
                 echo "Welcome, $user! Here are your creations.";
                 
                 // show the pretties from database

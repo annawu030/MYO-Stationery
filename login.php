@@ -19,37 +19,12 @@
     <?php include "includes/navbar.php"; ?>
 
     <main>
-        <form action="login.php" name="login" method="post">
-            <fieldset>
-                <legend>Log in</legend>
-                <label for="username">Username: </label>
-                <input type="text" name="username" />
-                <label for="password">Password: </label><input type="password" name="password" /> <br />
-                <input type="submit" value="Log in" />
-            </fieldset>
-        </form>
+        <?php
+            // moved to a separate page for my sanity -Sarah
+            include "includes/login.php";
+        ?>
+
     </main>
-
-    <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            echo "hi";
-            
-            // currently hard-coded
-            if ($_POST["username"] === "Sarah" && $_POST["password"] === "Sarah")
-            {
-    ?>
-    <script type="text/javascript">
-        window.location = "account.php";
-
-    </script>
-    <?php
-            }
-            else {
-                echo "incorrect";
-            }
-        }
-    
-    ?>
 
 
 </body>

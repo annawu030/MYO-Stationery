@@ -93,6 +93,16 @@ main {
     display: block;
 }
 
+.success {
+    color: #090;
+    font-weight: bold;
+}
+
+.error {
+    color: #b00;
+    font-weight: bold;
+}
+
 
 /* index.html */
 
