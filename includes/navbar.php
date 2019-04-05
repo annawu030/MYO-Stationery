@@ -10,7 +10,7 @@
             <a href="edit.php">Edit</a>
             <a href="browse.php">Browse</a>
             <?php
-                if (isset($_SESSION["user"])) {
+                if (isset($_SESSION["username"])) {
                     echo '<a href="logout.php">Log out</a>';
                 }
                 else {
