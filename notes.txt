@@ -1,3 +1,9 @@
+have some security implemented against:
+> POSTing to login.php or register.php when already logged in
+> usernames with HTML and other unconventional username stuff in them (when I remember to escape stuff)
+
+-----------------------------------------------------------------------------------------------------
+
 off the top of my head, there should be CSS properties that will let us:
 * define the maximum height (and width) of some element (max-height? and max-width?)
 * toggle whether the elements inside an element will scroll

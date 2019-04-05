@@ -25,8 +25,7 @@
             // if user is logged in, display saved stuff from database
             if (isset($_SESSION["username"])) {
                 // greet
-                $user = $_SESSION["username"];
-                echo "Welcome, $user! Here are your creations.";
+                echo "Welcome, " . htmlspecialchars($_SESSION["username"]) . "! Here are your creations.";
                 
                 // show the pretties from database
                 
