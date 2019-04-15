@@ -1,7 +1,8 @@
 var counter = 1;
 
 function dragstart_handler(ev) {
-  ev.dataTransfer.setData("text", ev.target.id); // Add the id of dragged source element (target) to the drag data payload
+  ev.dataTransfer.setData("class_name", ev.target.className);
+  ev.dataTransfer.setData("id", ev.target.id); // Add the id of dragged source element (target) to the drag data payload
   ev.effectAllowed = "copy"; // Tell the browser that copy is possible
 }
 
@@ -11,13 +12,15 @@ function dragover_handler(ev) {
 
 function drop_handler(ev) {
   ev.preventDefault();
-  var id = ev.dataTransfer.getData("text"); // Get the id of dragged source element (target) from the drag data payload
+  var c = ev.dataTransfer.getData("class_name");
+  var id = ev.dataTransfer.getData("id");// Get the id of dragged source element (target) from the drag data payload
   // Copy the element only if the source and destination ids are both "copy"
-  if (id == "img1" && ev.target.id == "canvas") {
+  if (c == "img1" && ev.target.id == "canvas") {
     // *****id condition need to fix to be dynamic
     var nodeCopy = document.getElementById(id).cloneNode(true);
-    var string = "newId"; //+ counter;
+    var string = "newId" + counter;
     nodeCopy.id = string;
+    nodeCopy.className = "size50px";
     counter += 1;
     ev.target.appendChild(nodeCopy);
   }
@@ -48,6 +51,11 @@ var active = false;
 container.addEventListener("mousedown", dragStart, false);
 container.addEventListener("mouseup", dragEnd, false);
 container.addEventListener("mousemove", drag, false);
+
+container.addEventListener("dblclick", doubleClick, false);
+function doubleClick(e) {
+  container.removeChild(document.getElementById(e.target.id));
+}
 
 // function that is triggered at mousedown
 function dragStart(e) {
@@ -110,3 +118,38 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+// document.getElementById("change_canvas_color").addEventListener("click", function () {
+//   // document.getElementById("colorpicker").focus();
+//   // document.getElementById("colorpicker").value = "#FFCC00";
+//   document.getElementById("colorpicker").click();
+// });
+var color_picker;
+var defaultColor = "#ffffff";
+
+window.addEventListener("load", startup, false);
+function startup() {
+  color_picker = document.querySelector("#colorpicker");
+  color_picker.value = defaultColor;
+  color_picker.addEventListener("input", updateFirst, false);
+  color_picker.select();
+}
+
+function updateFirst(event) {
+  var canvas = document.querySelector("#canvas");
+  if (canvas) {
+    canvas.style.backgroundColor = event.target.value;
+  }
+}
+
+function printDict() {
+  var c = document.getElementById("canvas").getBoundingClientRect();
+  document.getElementById("showinfo").innerHTML = c.top + " " + c.left;
+  var selected_imgs = document.querySelector("#canvas").children;
+  for (var i = 0; i < selected_imgs.length; i++) {
+    var img_rect = selected_imgs[i].getBoundingClientRect();
+    document.getElementById("showinfo").innerHTML += selected_imgs[i].id + " " + selected_imgs[i].src + " " + (img_rect.top - c.top) + " " + (img_rect.left - c.left) + "<br>";
+  }
+}
+//https://www.w3schools.com/code/tryit.asp?filename=G34YJVIXXWD4
+//https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript
