@@ -23,9 +23,15 @@
 
         <br>
         <div class="float-container">
-            <div class="float">
+            <div class="float" align="left">
                 <div id="canvas" ondrop="drop_handler(event);" ondragover="dragover_handler(event);"></div>
+                <br>
+                <label>Change Background Color: </label>
+                <input type="color" value="#ffffff" tabindex=1 id="colorpicker">
+                <!-- <input type="button" id="change_canvas_color" value="Change Background Color"> -->
             </div>
+
+            
 
             <div class="float">
                 <!-- open tabs on click -->
@@ -39,40 +45,58 @@
                     <!-- <div id="img11">
 
             </div> -->
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
+                    <img src="images/shape/circle.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="circle">
+                    <img src="images/shape/sun.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="sun">
+                    <img src="images/shape/triangle.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="triangle">
+                    <img src="images/shape/triangle_solid.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="triangle_solid">
+                    <img src="images/shape/star_circle.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="star_circle">
+                    <img src="images/shape/star.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="star">
+                    <img src="images/shape/rectangle.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="rectangle">
+                    <img src="images/shape/poligon.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="poligon">
+                    <img src="images/shape/heart.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="heart">
                 </div>
 
                 <div id="image" class="tabcontent" id="design_items">
                     <div>
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                        <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
+                        <img src="images/image/anchor.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="anchor">
+                        <img src="images/image/bone.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="bone">
+                        <img src="images/image/cabriolet.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="cabriolet">
+                        <img src="images/image/fan.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="fan">
+                        <img src="images/image/gift.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="gift">
+                        <img src="images/image/glasses.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="glasses">
+                        <img src="images/image/hot_air_balloon.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="hot_air_balloon">
+                        <img src="images/image/hummus.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="hummus">
+                        <img src="images/image/ice_cream.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="ice_cream">
+                        <img src="images/image/lemonade.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="lemonade">
+                        <img src="images/image/onigiri.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="onigiri">
+                        <img src="images/image/salad.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="salad">
+                        <img src="images/image/sand.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="sand">
+                        <img src="images/image/suitcase.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="suitcase">
+                        <img src="images/image/sun_smile.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="sun_smile">
+                        <img src="images/image/sunset.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="sunset">
+                        <img src="images/image/vegetables.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="vegetables">
+                        <img src="images/image/watermelon.png" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" class="img1" id="watermelon">
                     </div>
                 </div>
 
                 <div id="border" class="tabcontent">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="img1">
+                    <!-- <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b1">
+                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b2">
+                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b3">
+                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b4"> -->
                 </div>
             </div>
         </div>
         <div id="container">
         </div>
-        <form action="print.html">
+        <form action="print.php">
             <input type="submit" value="Print" />
         </form>
+        <form action="safe.php">
+            <input type="submit" value="Save" />
+        </form>
+
+        <p id="showinfo" onclick=printDict() class="hidden"> CLICK ME</p>
     </main>
 
 </body>
