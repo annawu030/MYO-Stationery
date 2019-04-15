@@ -1,6 +1,17 @@
+create -> print
+
+create.php should autosave if possible (after every move? after every few seconds? idk)
+
+when the user on create.php clicks the Print button, that should do one more save before going to print.php
+
+then print.php can pull from the database
+
+-----------------------------------------------------------------------------------------------------
+
 have some security implemented against:
 > POSTing to login.php or register.php when already logged in
 > usernames with HTML and other unconventional username stuff in them (when I remember to escape stuff)
+>> https://stackoverflow.com/questions/129677/whats-the-best-method-for-sanitizing-user-input-with-php
 
 -----------------------------------------------------------------------------------------------------
 
