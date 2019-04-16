@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<stationeries>
+  <stationery>
+    <id>123456</id>
+    <name>Happt Birthday Sarah</name>
+    <creator>Anna Wu</creator>
+    <createtime>2019-04-02T18:30:00</createtime>
+    <tag>
+      <colorscheme>warm</colorscheme>
+      <usertag>birthday</usertag>
+      <complexity>simple</complexity>
+    </tag>
+    <template>inspiration</template>
+  </stationery>
+  <stationery>
+    <id>223344</id>
+    <name>Invitation</name>
+    <creator>Lona Lee</creator>
+    <createtime>2019-03-28T11:27:00</createtime>
+    <tag>
+      <colorscheme>cool</colorscheme>
+      <usertag>professional</usertag>
+      <usertag>retreat</usertag>
+      <complexity>simple</complexity>
+    </tag>
+    <template>no</template>
+  </stationery>
+  <stationery>
+    <id>654321</id>
+    <name>Party Tonight</name>
+    <creator>AK Brooks</creator>
+    <createtime>2019-04-10 T09:52:00</createtime>
+    <tag>
+      <colorscheme>cool</colorscheme>
+      <usertag>party</usertag>
+      <usertag>fun</usertag>
+      <complexity>complex</complexity>
+    </tag>
+    <template>sharable</template>
+  </stationery>
+  <stationery>
+    <id>665544</id>
+    <name>Interview Thank You</name>
+    <creator>Anna Wu</creator>
+    <createtime>2019-04-14T09:30:00</createtime>
+    <tag>
+      <colorscheme>cool</colorscheme>
+      <usertag>professional</usertag>
+      <usertag>appreciation</usertag>
+      <complexity>simple</complexity>
+    </tag>
+    <template>no</template>
+  </stationery>
+</stationeries>
