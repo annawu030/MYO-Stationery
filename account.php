@@ -19,28 +19,25 @@
     <?php include "includes/navbar.php"; ?>
 
     <main>
-        <p>
+        
             <?php
         
             // if user is logged in, display saved stuff from database
             if (isset($_SESSION["username"])) {
                 // greet
-                echo "Welcome, " . htmlspecialchars($_SESSION["username"]) . "! Here are your creations.";
+                echo "<p>Welcome, " . htmlspecialchars($_SESSION["username"]) . "! Here are your creations.</p>";
                 
                 // show the pretties from database
                 
             }
-            // else, if user is a guest, display saved stuff from cookies
+            // else, if user is a guest, display saved stuff from cookies?
             else {
-                // inform
-                echo 'You are not logged in, so your creations displayed here will only be saved on this browser until the cookies from this website are cleared or a week has passed, whichever happens first.</p>';
-                echo '<p>Please <a href="login.php">log in</a> or <a href="register.php">register</a> to ensure you do not lose access to your creations.';
-                
-                // show the pretties from cookies
+                // moved to a separate page for my sanity -Sarah
+                include "includes/account-guest.php";
                 
             }
             ?>
-        </p>
+        
     </main>
 
 
