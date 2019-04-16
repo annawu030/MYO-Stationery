@@ -96,7 +96,13 @@
             <input type="submit" value="Save" />
         </form>
 
-        <p id="showinfo" onclick=printDict() class="hidden"> CLICK ME</p>
+        <p id="geninfo" onclick=printDict()> CLICK ME</p>
+        <p id="background_color" onclick=printDict()>rgb(255,255,255)</p>
+        <form >
+            <input type="text" id="bcolor" value="rgb(255,255,255)">
+            <input type="text" id="img_src1">
+            <input type="submit" value="Submit" onclick="myFunction()">
+        </form>
     </main>
 
 </body>
