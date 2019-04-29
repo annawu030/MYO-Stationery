@@ -80,10 +80,6 @@
                 </div>
 
                 <div id="border" class="tabcontent">
-                    <!-- <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b1">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b2">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b3">
-                    <img src="http://placehold.it/50x50" draggable="true" ondragstart="dragstart_handler(event);" ondragend="dragend_handler(event);" id="b4"> -->
                 </div>
             </div>
         </div>
@@ -92,16 +88,14 @@
         <form action="print.php">
             <input type="submit" value="Print" />
         </form>
-        <form action="safe.php">
+        <form action="save.php">
             <input type="submit" value="Save" />
         </form>
 
-        <p id="geninfo" onclick=printDict()> CLICK ME</p>
-        <p id="background_color" onclick=printDict()>rgb(255,255,255)</p>
-        <form >
-            <input type="text" id="bcolor" value="rgb(255,255,255)">
-            <input type="text" id="img_src1">
-            <input type="submit" value="Submit" onclick="myFunction()">
+        <form id="img_form" method="post" action="save.php">
+            <input type="text" id="bcolor" value="" name="bcolor_name"">
+            <input type="text" id="imgs_info" value="" name="imgs_info_name"">
+            <a href="#" onclick="tryprint()">Save</a>
         </form>
     </main>
 
