@@ -142,25 +142,29 @@ function updateFirst(event) {
   }
 }
 
-function printDict() {
-  // var c = document.getElementById("canvas").getBoundingClientRect();
-  document.getElementById("geninfo").innerHTML = 'HIII';
-  document.getElementById("background_color").innerHTML = document.getElementById("canvas").style.backgroundColor;
+function tryprint() {
+  var c = document.getElementById("canvas").getBoundingClientRect();
+  var imgs_info = document.getElementsById("imgs_info");
+  imgs_info.value = '';
+  var bcolor = document.getElementById("bcolor");
+  bcolor.value = document.getElementById("canvas").style.backgroundColor;
   var select_imgs = document.querySelector("#canvas").children;
   for (var i = 0; i < select_imgs.length; i++) {
     var img_rect = select_imgs[i].getBoundingClientRect();
-    document.getElementById("geninfo").innerHTML += select_imgs[i].id + " " + select_imgs[i].src + " " + (img_rect.top - c.top) + " " + (img_rect.left - c.left) + "<br>";
+    imgs_info.value += select_imgs[i].id + "," + select_imgs[i].src + "," + (img_rect.left - c.left) + "," + (img_rect.top - c.top) + ".";
+
   }
+  document.forms["img_form"].submit();
 }
 
 //attempt to put js values into input value to submit to db through php
-function myFunction() {
-  // var select_imgs = document.querySelector("#canvas").children;
-  var bcolor = document.getElementById("bcolor");
-  bcolor.value = document.getElementById("canvas").style.backgroundColor;
-  // var img_src1 = document.getElementById("img_src1");
-  // img_src1.value = select_imgs[0].id;
-  // document.getElementById("showinfo").innerHTML = select_imgs[0].id
-}
+// function myFunction() {
+//   var select_imgs = document.querySelector("#canvas").children;
+//   var bcolor = document.getElementById("bcolor");
+//   bcolor.value = document.getElementById("canvas").style.backgroundColor;
+//   var img_src1 = document.getElementById("img_src1");
+//   img_src1.value = select_imgs[0].id;
+//   document.getElementById("showinfo").innerHTML = select_imgs[0].id
+// }
 //https://www.w3schools.com/code/tryit.asp?filename=G34YJVIXXWD4
 //https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript
