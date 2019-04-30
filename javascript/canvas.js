@@ -171,3 +171,42 @@ function tryprint() {
 // }
 //https://www.w3schools.com/code/tryit.asp?filename=G34YJVIXXWD4
 //https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript
+
+// document.addEventListener('DOMContentLoaded', function UpdateCanvasColor() {
+//   var color = localStorage.getItem('color');
+//   if (color != '') {
+//       document.body.style.backgroundColor = color;
+//   }
+// });
+
+window.onload = function () {
+
+  //Get a reference to the link on the page
+  // with an id of "mylink"
+  var a = document.getElementById("restore");
+
+  //Set code to run when the link is clicked
+  // by assigning a function to "onclick"
+  a.onclick = function () {
+    var src = document.getElementById("testsrc").innerHTML;
+    var src_arr = src.split('+');
+    var xpos = document.getElementById("testxpos").innerHTML;
+    var xpos_arr = xpos.split('+');
+    var ypos = document.getElementById("testypos").innerHTML;
+    var ypos_arr = ypos.split('+');
+
+    if (src_arr.length == 1) {
+      alert("There's no element to restore. Add some shapes and images and then click 'save'.");
+    }
+
+    for (var i = 0; i < src_arr.length - 1; i++) {
+      var canvas_img = new Image(50, 50);
+      canvas_img.src = src_arr[i];
+      // document.getElementById("hihihi").innerHTML += src_arr[i];
+      document.querySelector("#canvas").appendChild(canvas_img);
+      canvas_img.style.marginLeft = xpos_arr[i] + "px";
+      canvas_img.style.marginTop = ypos_arr[i] + "px";
+    }
+    return false;
+  }
+}

@@ -47,16 +47,19 @@ if (isset($_POST["imgs_info_name"])){
           $ypos = end($values);
         }
       }
-      echo $filepath . " + " . $xpos . " + " . $ypos. "<br>";
+      // echo $filepath . " + " . $xpos . " + " . $ypos. "<br>";
       if (!empty($sid) && !empty($filepath)){
-        $rest = "/Applications/XAMPP/xamppfiles/htdocs".substr($filepath, 11, -1)."g";  // returns "abcde"
+        // $rest = "/Applications/XAMPP/xamppfiles/htdocs".substr($filepath, 11, -1)."g";  // returns "abcde"
+        // echo $rest;
+        // $blob = fopen($rest, 'rb');
+        $rest = "images/".substr($filepath, 42, -1)."g";  
         echo $rest;
+        // $blob = fopen($rest, 'rb');
         require('connect-db.php');
-        $blob = fopen($rest, 'rb');
         $query = "INSERT INTO element (id, img, xpos, ypos) VALUES (:id, :img, :xpos, :ypos)";
         $statement = $db->prepare($query);
         $statement->bindValue(':id', $sid);
-        $statement->bindValue(':img', $blob);
+        $statement->bindValue(':img', $rest);
         $statement->bindValue(':xpos', $xpos);
         $statement->bindValue(':ypos', $ypos);
         $statement->execute();

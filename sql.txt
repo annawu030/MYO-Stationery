@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `stationery` (
 CREATE TABLE IF NOT EXISTS `element` (
   `id` int(6) NOT NULL,
   `eid` int(6) NOT NULL AUTO_INCREMENT,
-  `img` blob,
+  `img` varchar(100) NOT NULL,
   `xpos` double(20,10) NOT NULL DEFAULT 0,
   `ypos` double(20,10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`eid`,`id`),
