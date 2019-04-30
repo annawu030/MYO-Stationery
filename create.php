@@ -17,9 +17,51 @@
 
 <body>
     <?php include "includes/navbar.php"; ?>
+    
 
     <main>
-        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › Stationery Name </span>
+        <?php 
+            $sid = "";
+            if (isset($_POST["sname"])){
+                
+                require('connect-db.php');
+                $sname = $_POST["sname"];
+                $creator = $_POST["creator"];
+                $ctime = $_POST["ctime"];
+                $scheme = $_POST["scheme"];
+                if (!isset($_POST["is_template"])){
+                    $is_template = false;
+                }
+                else $is_template = true;
+                echo $sname." + ".$creator." + ".$ctime." + ".$scheme." + ".$is_template;
+
+                $query = "INSERT INTO stationery (sname, creator, create_time, color_scheme, is_template) VALUES (:sname, :creator, :ctime, :scheme, :is_template)";
+                $statement = $db->prepare($query);
+
+                $statement->bindValue(':sname', $sname);
+                $statement->bindValue(':creator', $creator);
+                $statement->bindValue(':ctime', $ctime);
+                $statement->bindValue(':scheme', $scheme);
+                $statement->bindValue(':is_template', $is_template);
+                $statement->execute();
+                $statement->closeCursor();
+
+
+                $query = "SELECT id FROM `stationery` WHERE creator = :creator and create_time = :ctime";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':creator', $creator);
+                $statement->bindValue(':ctime', $ctime);
+                $statement->execute();
+
+                // fetchAll() returns an array for all of the rows in the result set
+                $results = $statement->fetchAll();
+                // closes the cursor and frees the connection to the server so other SQL statements may be issued
+                $statement->closecursor();
+
+                $sid = $results[0]['id'];
+            }
+        ?>
+        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <?php if(isset($_POST['sname']) && !empty($_POST['sname'])) echo $_POST['sname']; ?> </span>
 
         <br>
         <div class="float-container">
@@ -88,15 +130,19 @@
         <form action="print.php">
             <input type="submit" value="Print" />
         </form>
-        <form action="save.php">
-            <input type="submit" value="Save" />
+        <form action="save.php" id="element_form" method="post">
+            <input type="text" id="sid" name="sid_name" value=<?php echo $sid;?>>
+            <input type="text" id="bcolor" name="bcolor_name">
+            <input type="text" id="info" name="imgs_info_name" value="">
+            <!-- <input type="button" onclick="tryprint()" value="Save" /> -->
+            <a href="#" onclick="tryprint();">Save</a>
         </form>
 
-        <form id="img_form" method="post" action="save.php">
+        <!-- <form id="img_form" method="post" action="save.php">
             <input type="text" id="bcolor" value="" name="bcolor_name"">
             <input type="text" id="imgs_info" value="" name="imgs_info_name"">
             <a href="#" onclick="tryprint()">Save</a>
-        </form>
+        </form> -->
     </main>
 
 </body>

@@ -143,18 +143,21 @@ function updateFirst(event) {
 }
 
 function tryprint() {
-  var c = document.getElementById("canvas").getBoundingClientRect();
-  var imgs_info = document.getElementsById("imgs_info");
-  imgs_info.value = '';
   var bcolor = document.getElementById("bcolor");
   bcolor.value = document.getElementById("canvas").style.backgroundColor;
+  var c = document.getElementById("canvas").getBoundingClientRect();
+  // document.getElementsById("info").value = "ffffff";
+  // document.getElementById("info").value = "HEY HEY";
+  var imgs_info = document.getElementById("info");
+  imgs_info.value = '';
+
   var select_imgs = document.querySelector("#canvas").children;
   for (var i = 0; i < select_imgs.length; i++) {
     var img_rect = select_imgs[i].getBoundingClientRect();
-    imgs_info.value += select_imgs[i].id + "," + select_imgs[i].src + "," + (img_rect.left - c.left) + "," + (img_rect.top - c.top) + ".";
+    imgs_info.value += "filepath" + ":" + select_imgs[i].src + "," + "xpos" + ":" + (img_rect.left - c.left) + ",ypos" + ":" + (img_rect.top - c.top) + ";";
 
   }
-  document.forms["img_form"].submit();
+  document.forms["element_form"].submit();
 }
 
 //attempt to put js values into input value to submit to db through php

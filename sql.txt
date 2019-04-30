@@ -1,0 +1,52 @@
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `username` varchar(30),
+  `password` char(32),
+  PRIMARY KEY (`username`)
+  )
+
+CREATE TABLE IF NOT EXISTS `stationery` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `sname` varchar(100) NOT NULL DEFAULT '',
+  `creator` varchar(50) NOT NULL,
+  `create_time` datetime,
+  `color_scheme` varchar(40) NOT NULL,
+  `complexity` varchar(40) NOT NULL,
+  `is_template` BOOLEAN,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(creator) REFERENCES user(username) ON DELETE CASCADE
+)
+
+CREATE TABLE IF NOT EXISTS `element` (
+  `id` int(6) NOT NULL,
+  `eid` int(6) NOT NULL AUTO_INCREMENT,
+  `img` blob,
+  `xpos` double(20,10) NOT NULL DEFAULT 0,
+  `ypos` double(20,10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`eid`,`id`),
+  FOREIGN KEY(id) REFERENCES stationery(id) ON DELETE CASCADE
+)
+
+/* no longer needed CREATE TABLE IF NOT EXISTS `hold` (
+  `id` int(6) NOT NULL,
+  `eid` int(6) NOT NULL,
+  PRIMARY KEY (`id`,`eid`),
+  FOREIGN KEY(id) REFERENCES stationery(id) ON DELETE CASCADE,
+  FOREIGN KEY(eid) REFERENCES element(eid) ON DELETE CASCADE
+) */
+
+CREATE TABLE IF NOT EXISTS `canvas` (
+  `id` int(6) NOT NULL,
+  `bcolor` varchar(30) NOT NULL DEFAULT 'rgb(255,255,255)',
+  `canvas_width` int(4) NOT NULL DEFAULT 0,
+  `canvas_height` int(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY(id) REFERENCES stationery(id) ON DELETE CASCADE
+)
+
+CREATE TABLE IF NOT EXISTS `usertags` (
+  `id` int(6) NOT NULL,
+  `usertag` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`, `usertag`),
+  FOREIGN KEY(id) REFERENCES stationery(id) ON DELETE CASCADE
+)
