@@ -21,7 +21,24 @@
         
         // need to look at database
         // credentials currently hard-coded:
-        if ($_POST["username"] === "Sarah" && $_POST["password"] === "Sarah")
+        require('connect-db.php');
+        $query = "SELECT username, password FROM `user` WHERE username = :user and password = :password";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':user', $_POST["username"]);
+        $statement->bindValue(':password', $_POST["password"]);
+        $statement->execute();
+
+        // fetchAll() returns an array for all of the rows in the result set
+        $results = $statement->fetchAll();
+        // closes the cursor and frees the connection to the server so other SQL statements may be issued
+        $statement->closecursor();
+        if (!empty($results)){
+            $u = $results[0]['username'];
+            $p = $results[0]['password'];
+        }
+        
+
+        if (isset($u) && isset($p) && $_POST["username"] === $u && $_POST["password"] === $p)
         {
             $_SESSION["username"] = $_POST["username"];
             
