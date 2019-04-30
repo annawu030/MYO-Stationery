@@ -74,8 +74,10 @@
               $temp = "No";
             }
             else $temp = "Yes";
-              echo "ID: " . $result['id'] . "<br/>Stationery Name:" . $result['sname'] . "<br/>Create Time: " . $result['create_time'] . "<br/>Color Scheme: " . $result['color_scheme'] . "<br/>Allow Others to Use As Template: " . $temp . "<br/><br/><br/>";
-              $count += 1;
+            echo '<a href="create.php?id='.$result['id'].'&sname='.$result['sname'].'">'.$result['id'].'</a><br>';
+            // echo "ID: " . $result['id'] . "<br/>";
+            echo "Stationery Name:" . $result['sname'] . "<br/>Create Time: " . $result['create_time'] . "<br/>Color Scheme: " . $result['color_scheme'] . "<br/>Allow Others to Use As Template: " . $temp . "<br/><br/><br/>";
+            $count += 1;
           }
           if ($count > 1){
             echo "You have created ".$count." stationeries so far~"."<br/>";

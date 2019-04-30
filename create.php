@@ -13,6 +13,7 @@
     <title>Make Your Own Stationery</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -20,6 +21,49 @@
     
 
     <main>
+        <?php
+            $get_bcolor = "";
+            if (isset($_GET["id"])){
+                // echo "HOOOOOHOOOOHOOOO". $_GET["id"];
+                require('connect-db.php');
+
+                $query = "SELECT bcolor FROM `canvas` WHERE id = :id";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':id', $_GET["id"]);
+                $statement->execute();
+                $results = $statement->fetchAll();
+                $statement->closecursor();
+                if (!empty($results))
+                    $get_bcolor = $results[0]['bcolor'];
+                // echo $get_bcolor;
+
+                $query = "SELECT eid, img, xpos, ypos FROM `element` WHERE id = :id";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':id', $_GET["id"]);
+                $statement->execute();
+                // $stmt->bindColumn(2, $data, PDO::PARAM_LOB);
+                // $stmt->fetch(PDO::FETCH_BOUND);
+                $results = $statement->fetchAll();
+                $statement->closecursor();
+                $src = "<p id='testsrc' style='display:none'>";
+                $xpos = "<p id='testxpos' style='display:none'>";
+                $ypos = "<p id='testypos' style='display:none'>";
+                foreach ($results as $result)
+                {
+                    // echo "img:" . $result['img'] . "<br/>xpos: " . $result['xpos'] . "<br/>Color ypos: " . $result['ypos'] . "<br/><br/><br/>";
+                    $src .= $result['img']."+";
+                    $xpos .= $result['xpos']."+";
+                    $ypos .= $result['ypos']."+";
+                    
+                }
+                $src .= "</p>";
+                $xpos .= "</p>";
+                $ypos .= "</p>";
+                echo $src . $xpos . $ypos;
+                echo "<a id = 'restore' style='background-color: #cc0000; color: white; padding: 10px 10px; text-align: center; display: inline-block; border-radius: 5px;' href='#'>Restore Elements?</a><br/><br/>";
+                // echo $get_bcolor;
+            }
+        ?>
         <?php 
             $sid = "";
             if (isset($_POST["sname"])){
@@ -61,7 +105,10 @@
                 $sid = $results[0]['id'];
             }
         ?>
-        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <?php if(isset($_POST['sname']) && !empty($_POST['sname'])) echo $_POST['sname']; ?> </span>
+        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <?php 
+            if(isset($_POST['sname']) && !empty($_POST['sname'])) echo $_POST['sname']; 
+            else if (isset($_GET['sname']) && !empty($_GET['sname'])) echo $_GET['sname']; 
+        ?> </span>
 
         <br>
         <div class="float-container">
@@ -131,7 +178,10 @@
             <input type="submit" value="Print" />
         </form>
         <form action="save.php" id="element_form" method="post">
-            <input type="text" id="sid" name="sid_name" value=<?php echo $sid;?>>
+            <input type="text" id="sid" name="sid_name" value=<?php 
+                if (!empty($sid)) echo $sid;
+                else if (isset($_GET['id']) && !empty($_GET['id'])) echo $_GET['id'];
+            ?>>
             <input type="text" id="bcolor" name="bcolor_name">
             <input type="text" id="info" name="imgs_info_name" value="">
             <!-- <input type="button" onclick="tryprint()" value="Save" /> -->
@@ -143,9 +193,16 @@
             <input type="text" id="imgs_info" value="" name="imgs_info_name"">
             <a href="#" onclick="tryprint()">Save</a>
         </form> -->
+        <!-- <p id="hihihi">hiiiiiiiiiiiii</p> -->
     </main>
 
 </body>
 <script src="javascript/canvas.js"></script>
+<script>
+    var color = "<?php echo $get_bcolor ?>" /*localStorage.getItem('color')*/;
+    // if (!empty(color)) {
+    document.getElementById("canvas").style.backgroundColor = color;
+</script>
+
 
 </html>
