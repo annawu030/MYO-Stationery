@@ -21,7 +21,19 @@
         
         // need to look at database and make sure the username doesn't already exist
         // currently hard-coded:
-        if ($_POST["username"] === "Sarah")
+        require('connect-db.php');
+        $query = "SELECT username FROM `user` WHERE username = :user";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':user', $_POST["username"]);
+        $statement->execute();
+
+        // fetchAll() returns an array for all of the rows in the result set
+        $results = $statement->fetchAll();
+        // closes the cursor and frees the connection to the server so other SQL statements may be issued
+        $statement->closecursor();
+        $u = $results[0]['username'];
+
+        if ($_POST["username"] === $u)
         {
             echo '<p class="error">Sorry, that username is already taken.</p>';
         }
@@ -29,6 +41,13 @@
         else {
             // need to add to database...
             // add to database here
+            $query = "INSERT INTO user (username, password) VALUES (:username, :password)";
+            $statement = $db->prepare($query);
+
+            $statement->bindValue(':username', $_POST["username"]);
+            $statement->bindValue(':password', $_POST["password"]);
+            $statement->execute();
+            $statement->closeCursor();
             
             // and log them in automatically
             $_SESSION["username"] = $_POST["username"];
