@@ -31,117 +31,65 @@
             echo '<p>Please <a href="login.php">log in</a> or <a href="register.php">register</a> to ensure you do not lose access to your creations.';          
         }
       ?>
-
-      <?php
-        $error = false;
-        if (isset($_POST['insert'])){
-          $required = array('sname', 'creator', 'ctime', 'scheme', 'tag', 'complex','template');
-        // Loop over field names, make sure each one exists and is not empty 
-          foreach($required as $field) {
-            if (empty($_POST[$field])) {
-              $error = true;
-            }
-          }
-          if (!$error){
-            libxml_use_internal_errors(true);       
-            $xml=simplexml_load_file("data.xml") or die("Error: Cannot create object");
-            // error handling
-            if ($xml === false){  // failed loading XML, display error messages
-              foreach (libxml_get_errors() as $error){
-                  echo "$error->message <br/>";
-              }
-            }   
-            $xml->addChild("stationeries");
-            $xml->stationeries->addChild("stationery");
-            $xml->stationeries->stationery->addChild("id", 555555);
-            $xml->stationeries->stationery->addChild("name", $_POST["sname"]);
-            $xml->stationeries->stationery->addChild("creator", $_POST["creator"]);
-            $xml->stationeries->stationery->addChild("createtime", $_POST["ctime"]);
-            $xml->stationeries->stationery->addChild("tag");
-            $xml->stationeries->stationery->addChild("template", $_POST["template"]);
-            
-            $xml->stationeries->stationery->tag->addChild("colorscheme", $_POST["scheme"]);
-            $xml->stationeries->stationery->tag->addChild("usertag", $_POST["tag"]);
-            $xml->stationeries->stationery->tag->addChild("complexity", $_POST["complex"]);
-
-            // $xml->save("data.xml");
-          }
-        }
-        
-      ?>
-
-      <form method="POST" action="edit.php">
+      
+      <form action="create.php" id="new_stationery" method="post">
         Stationery Name:&nbsp<input type="text" name="sname"><br>
         Creator:&nbsp<input type="text" name="creator" value="<?php echo $username; ?>"><br>
-        Creation Time:&nbsp<input type="text" name="ctime" value="need to figure out"><br>
-        Color Scheme:&nbsp<input type="text" name="scheme"><br>
+        Creation Time:&nbsp<input type="text" id="ctime" name="ctime"><br>
+        Color Scheme:&nbsp
+        <select name="scheme">
+          <option value="warm">Warm</option>
+          <option value="cold">Cold</option>
+          <option value="neutral">Neutral</option>
+        </select><br>
         Tag: &nbsp<input type="text" name="tag" placeholder="i.e. professional"><br>
-        Complexity: &nbsp<input type="text" name="complex" value="need to get element count"><br>
-        Template: &nbsp<input type="text" name="template" value="no"><br>
-        <input type="submit" value="Submit" name="insert">
-        <?php
-          if ($error) {
-            echo '<span style="color:red;"> All fields are required.</span><br>';
-          }
-        ?>
+        <!-- Complexity: &nbsp<input type="text" name="complex" value="need to get element count"><br> -->
+        <input type="checkbox" name="is_template"> <label for="is_template"> Allow other users to use your creation as a template?</label>&ensp;&ensp; <br>
+        <br>
+        <a style="background-color: #039; color: white; padding: 10px 10px; text-align: center; display: inline-block; border-radius: 5px;" href="#" onclick="news();">Create New Stationery</a>
+        <br>
+        <br>
       </form> 
 
-      
-
       <?php
-        // retrieve all XML errors when loading the document, result in an array of errors
-        libxml_use_internal_errors(true);       
+        if (!empty($_SESSION["username"])) {
+          $username = htmlspecialchars($_SESSION["username"]); 
+          // if ($username === "Anna Wu")
+          $cname = $username;
+          $count = 0;
+          require('connect-db.php');
+          $query = "SELECT id, sname, create_time, color_scheme, is_template FROM `stationery` WHERE creator = :creator";
+          $statement = $db->prepare($query);
+          $statement->bindValue(':creator', $cname);
+          $statement->execute();
 
-        $xml=simplexml_load_file("data.xml") or die("Error: Cannot create object");
-        // error handling
-        if ($xml === false){  // failed loading XML, display error messages
-          foreach (libxml_get_errors() as $error){
-              echo "$error->message <br/>";
+          // fetchAll() returns an array for all of the rows in the result set
+          $results = $statement->fetchAll();
+          // closes the cursor and frees the connection to the server so other SQL statements may be issued
+          $statement->closecursor();
+          foreach ($results as $result)
+          {
+            // echo "result";
+            if ($result['is_template'] == 0) {
+              $temp = "No";
+            }
+            else $temp = "Yes";
+              echo "ID: " . $result['id'] . "<br/>Stationery Name:" . $result['sname'] . "<br/>Create Time: " . $result['create_time'] . "<br/>Color Scheme: " . $result['color_scheme'] . "<br/>Allow Others to Use As Template: " . $temp . "<br/><br/><br/>";
+              $count += 1;
+          }
+          if ($count > 1){
+            echo "You have created ".$count." stationeries so far~"."<br/>";
+          }
+          else if ($count == 1){
+            echo "You have created ".$count." stationery so far~"."<br/>";
+          }
+          else{
+            echo "You haven't created any stationery yet, make one?"."<br/>";
           }
         }
-        
-        $count = 0;
-        foreach($xml->children()->stationery as $stationery) {
-          if ($stationery->creator == $username){
-            // echo "Stationery ID: ".$stationery->id."<br/>";
-            // echo '<a href="' . $folder_path . '">Link text</a>';
-            echo "Stationery Name: ".$stationery->name."<br/>";
-            echo "Creation Time: ".$stationery->createtime."<br/>";
-            $usertag = "";
-            $multiple_utag = False;
-            foreach($stationery->tag->children() as $tag) {
-              if ($tag->getName() == "colorscheme"){
-                echo "Color Scheme: ".$tag."<br/>";
-              }
-              if ($tag->getName() == "usertag"){
-                $usertag .= " ".$tag.",";
-                $multiple_utag = True;
-              }
-              if ($tag->getName() == "complexity")
-              {
-                echo "Complexity: ".$tag."<br/>";
-              }
-            }
-            if ($multiple_utag == True){
-              echo "User Tags: ".substr($usertag, 0, -1)."<br/>";
-            }
-            echo "</br>";
-            $count += 1;
-          }
-        } 
-        if ($count > 1){
-          echo "You have ".$count." stationeries to work on~"."<br/>";
-        }
-        else if ($count == 1){
-          echo "You have ".$count." stationery to work on~"."<br/>";
-        }
-        else{
-          echo "You haven't created any stationery yet, make one?"."<br/>";
-        }
-
-
       ?>
+
     </main>
 </body>
-
+<script src="javascript/edit.js"></script>
 </html>
