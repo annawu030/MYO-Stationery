@@ -77,7 +77,7 @@
                     $is_template = false;
                 }
                 else $is_template = true;
-                echo $sname." + ".$creator." + ".$ctime." + ".$scheme." + ".$is_template;
+                // echo $sname." + ".$creator." + ".$ctime." + ".$scheme." + ".$is_template;
 
                 $query = "INSERT INTO stationery (sname, creator, create_time, color_scheme, is_template) VALUES (:sname, :creator, :ctime, :scheme, :is_template)";
                 $statement = $db->prepare($query);
@@ -105,7 +105,7 @@
                 $sid = $results[0]['id'];
             }
         ?>
-        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <?php 
+        <span class="breadcrumbs"><a href="index.php">Home</a> › <a href="new.php">New</a> › <?php 
             if(isset($_POST['sname']) && !empty($_POST['sname'])) echo $_POST['sname']; 
             else if (isset($_GET['sname']) && !empty($_GET['sname'])) echo $_GET['sname']; 
         ?> </span>
@@ -175,17 +175,17 @@
         <div id="container">
         </div>
         <form action="print.php">
-            <input type="submit" value="Print" />
+            <input style="background-color: #039; color: white; padding: 10px 10px; text-align: center; display: inline-block; border-radius: 5px;" type="submit" value="Print" />
         </form>
         <form action="save.php" id="element_form" method="post">
-            <input type="text" id="sid" name="sid_name" value=<?php 
+            <input type="text" id="sid" name="sid_name" style='display:none' value=<?php 
                 if (!empty($sid)) echo $sid;
                 else if (isset($_GET['id']) && !empty($_GET['id'])) echo $_GET['id'];
             ?>>
-            <input type="text" id="bcolor" name="bcolor_name">
-            <input type="text" id="info" name="imgs_info_name" value="">
+            <input type="text" id="bcolor" name="bcolor_name" style='display:none'>
+            <input type="text" id="info" name="imgs_info_name" value="" style='display:none'>
             <!-- <input type="button" onclick="tryprint()" value="Save" /> -->
-            <a href="#" onclick="tryprint();">Save</a>
+            <a style="background-color: #039; color: white; padding: 10px 10px; text-align: center; display: inline-block; border-radius: 5px;" href="#" onclick="tryprint();">Save</a>
         </form>
 
         <!-- <form id="img_form" method="post" action="save.php">
@@ -194,6 +194,8 @@
             <a href="#" onclick="tryprint()">Save</a>
         </form> -->
         <!-- <p id="hihihi">hiiiiiiiiiiiii</p> -->
+        <!-- <input type="button" id="btnPrint" value="Save PNG"/> -->
+        <!-- <div id="img-out"> </div> -->
     </main>
 
 </body>

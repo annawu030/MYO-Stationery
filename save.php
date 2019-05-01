@@ -77,4 +77,7 @@ if (isset($_POST["imgs_info_name"])){
 // else{
 //   echo "no imgs";
 // }
+header("Location: new.php");
+die();
+
 ?>

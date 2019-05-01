@@ -20,7 +20,7 @@
 
     <main id="printpreview">
 
-        <span class="breadcrumbs"><a href="index.html">Home</a> › <a href="edit.html">Edit</a> › <a href="#">Stationery Name</a> › Print Preview</span>
+        <span class="breadcrumbs"><a href="index.php">Home</a> › <a href="new.php">New</a> › <a href="#">Stationery Name</a> › Print Preview</span>
 
         <div id="printpreview-window-wrapper">
             <!-- might need [] thing in input names -->
