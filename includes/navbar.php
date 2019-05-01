@@ -7,7 +7,7 @@
         <span class="functionlinks">
             <a href="account.php" title="Account" style="min-width:0;"><img src=" images/avatar.png" alt="User avatar" id="avatar" /></a>
             <a href="create.php">Create</a>
-            <a href="edit.php">Edit</a>
+            <a href="new.php">New</a>
             <a href="browse.php">Browse</a>
             <?php
                 if (isset($_SESSION["username"])) {

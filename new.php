@@ -33,9 +33,9 @@
       ?>
       
       <form action="create.php" id="new_stationery" method="post">
-        Stationery Name:&nbsp<input type="text" name="sname"><br>
-        Creator:&nbsp<input type="text" name="creator" value="<?php echo $username; ?>"><br>
-        Creation Time:&nbsp<input type="text" id="ctime" name="ctime"><br>
+        Stationery Name:&nbsp<input type="text" name="sname">
+        <input type="text" name="creator" value="<?php echo $username; ?>" style='display:none'>
+        <input type="text" id="ctime" name="ctime" style='display:none'><br>
         Color Scheme:&nbsp
         <select name="scheme">
           <option value="warm">Warm</option>
