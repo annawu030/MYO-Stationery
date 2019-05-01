@@ -31,7 +31,9 @@
         $results = $statement->fetchAll();
         // closes the cursor and frees the connection to the server so other SQL statements may be issued
         $statement->closecursor();
-        $u = $results[0]['username'];
+        $u = "";
+        if (!empty($results))
+            $u = $results[0]['username'];
 
         if ($_POST["username"] === $u)
         {
