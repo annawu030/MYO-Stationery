@@ -1,3 +1,7 @@
+angular folder: yes to angular routing, stylesheet is CSS
+
+-----------------------------------------------------------------------------------------------------
+
 create -> print
 
 create.php should autosave if possible (after every move? after every few seconds? idk)
