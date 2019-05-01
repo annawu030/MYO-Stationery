@@ -57,11 +57,33 @@
     echo '<p>You are not logged in, so your creations displayed here will only be saved on this browser until the cookies from this website are cleared or a week has passed, whichever happens first.</p>';
     echo '<p>Please <a href="login.php">log in</a> or <a href="register.php">register</a> to ensure you do not lose access to your creations.</p>';
     ?>
-    <form action="account.php" name="guest" method="GET">
+    <form name="guest">
             <label for="name">Set your temporary name: </label>
             <input type="text" name="name" />
-            <input type="submit" value="Set name" />
+            <input type="submit" value="Set name" id="setguestname" />
     </form>
+    <script type="text/javascript">
+        // AJAX
+        function setName() {
+            // let's say this is a modern browser
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var result = xhr.responseText;
+                    document.write(responseText);
+                }
+            }
+
+            var getURL = "account.php";
+
+            xhr.open("GET", getURL, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.send();
+        }
+        var btnSubmit = document.getElementById("setguestname");
+        btnSubmit.addEventListener("click", setName, false);
+    </script>
     <?php
 
     // show the pretties from cookies?
