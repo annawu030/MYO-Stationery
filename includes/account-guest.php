@@ -41,15 +41,19 @@
     // now, to display page content
 
     // greet
+    function welcomeMessage($name) {
+        if (is_string($name)) {
+            echo "<p>Welcome, " . htmlspecialchars($name) . "!</p>";
+        }
+    }
     if (isset($_GET["name"])) {
-        $newName = $_GET["name"];
-        echo "<p>Welcome, " . htmlspecialchars($newName) . "!</p>";
+        welcomeMessage($_GET["name"]);
     }
     else if (isset($_COOKIE["name"])) {
-        echo "<p>Welcome, " . htmlspecialchars($_COOKIE["name"]) . "!</p>";
+        welcomeMessage($_COOKIE["name"]);
     }
     
-    // inform
+    // inform because you are a guest
     echo '<p>You are not logged in, so your creations displayed here will only be saved on this browser until the cookies from this website are cleared or a week has passed, whichever happens first.</p>';
     echo '<p>Please <a href="login.php">log in</a> or <a href="register.php">register</a> to ensure you do not lose access to your creations.</p>';
     ?>
