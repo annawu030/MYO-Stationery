@@ -20,7 +20,7 @@
         }
         
         // need to look at database and make sure the username doesn't already exist
-        // currently hard-coded:
+
         require('connect-db.php');
         $query = "SELECT username FROM `user` WHERE username = :user";
         $statement = $db->prepare($query);

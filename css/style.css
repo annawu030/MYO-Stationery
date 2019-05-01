@@ -20,6 +20,7 @@ body {
     /* to make nav and hr touch page sides */
     margin: 0;
     background-color: #def;
+    font-family: Verdana, sans-serif;
 }
 
 a {

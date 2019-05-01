@@ -20,7 +20,7 @@
         }
         
         // need to look at database
-        // credentials currently hard-coded:
+        
         require('connect-db.php');
         $query = "SELECT username, password FROM `user` WHERE username = :user and password = :password";
         $statement = $db->prepare($query);
